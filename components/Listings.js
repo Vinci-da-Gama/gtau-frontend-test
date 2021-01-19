@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { CLEAR_LOGGEDIN_FBUSER } from "../../../henry-school-frontend/src/types";
 
 const ACTIONS = ["View", "Reply"];
 
@@ -28,13 +27,11 @@ const Listing = (srz) =>
             <span className="color-text-light">{el.location}</span>
           </p>
           {el.imgUrl && (
-            <div className="image__container">
-              <img
-                className="img-adjustemnt"
-                src={el.imgUrl}
-                alt={`${el.title}_${idx}`}
-              />
-            </div>
+            <img
+              className="img-adjustemnt"
+              src={el.imgUrl}
+              alt={`${el.title}_${idx}`}
+            />
           )}
           <p className="threelines-truncated">{el.description}</p>
           <div>
@@ -66,17 +63,15 @@ const Listings = ({ dataEndpoint, keyword, location }) => {
   useEffect(() => {
     const fetchRz = async () => {
       try {
-        const results = await (
-          await fetch(`http://localhost:3000${dataEndpoint}`)
-        ).json();
+        const results = await (await fetch(`${dataEndpoint}`)).json();
 
         if (!results) {
-          console.log("31 -- please check your data return error...");
+          console.log("71 -- please check your data return error...");
         } else {
           setSearchResultes(results);
         }
       } catch (error) {
-        console.log("37 -- error: ", error.message);
+        console.log("76 -- error: ", error.message);
       }
     };
     (!searchResultes || searchResultes.length === 0) && fetchRz();
@@ -90,8 +85,8 @@ const Listings = ({ dataEndpoint, keyword, location }) => {
       <div className="listings__header">
         <h2 className="mb-0 color-text-dark">Search Result</h2>
         <p className="mt-0 color-text-light">
-          <span className="color-primary">{6} results</span> for{" "}
-          <span className="color-primary">{keyword}</span> in{" "}
+          <span className="color-primary">{searchResultes.length} results</span>{" "}
+          for <span className="color-primary">{keyword}</span> in{" "}
           <span className="color-primary">{location}</span>
         </p>
       </div>
