@@ -4,6 +4,15 @@
 .mt-0 {
     margin-top: 0;
 }
+.mr-1 {
+    margin-right: var(--spacing);
+}
+.ml-1 {
+    margin-left: var(--spacing);
+}
+.m-1 {
+    margin: var(--spacing);
+}
 
 .color-primary {
     color: var(--color-primary);
@@ -23,21 +32,24 @@
 }
 
 .listings__grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 29.5% 30% 29.5%;
+    grid-template-rows: auto;
+    gap: var(--grid-gap);
+    justify-items: center;
+    align-items: stretch;
 }
 
-.price-location {
+.listings__paragraph {
     display: flex;
     justify-content: space-between;
 }
 
-.listing__card {
-    padding-right: 1rem;
-}
+/* .listings__card {
+} */
 
 .oneline-truncated {
-    width: 210px;
+    width: 240px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -56,12 +68,12 @@
     object-fit: contain;
 }
 
-.card__button {
+.listings__button {
     width: 70px;
     color: var(--color-text-dark);
     background-color: #d3e4e9;
     border: none;
-    margin-right: .5rem;
+    margin-left: var(--spacing);
     border-radius: .3rem;
     padding: .5rem .3rem;
     font-weight: bold;
@@ -69,28 +81,42 @@
 
 @media (min-width: 380px) {
     /* mobile */
-    .listing__card {
-        width: 90%;
+    .listings__grid {
+        grid-template-columns: 96%;
+        gap: var(--spacing);
+    }
+    .img-adjustemnt {
+        object-fit: cover;
     }
 }
 
 @media (min-width: 576px) {
+    /* mobile */
+    .listings__grid {
+        grid-template-columns: 94%;
+        gap: var(--spacing-x2);
+    }
+}
+
+@media (min-width: 768px) {
     /* tablet */
-    .listing__card {
-        width: 47%;
+    .listings__grid {
+        grid-template-columns: 49% 49%;
+        gap: var(--spacing-x3);
     }
 }
 
 @media (min-width: 800px) {
     /* tablet */
-    .listing__card {
-        width: 31%;
+    .listings__grid {
+        gap: var(--spacing-x4);
     }
 }
 
 @media (min-width: 1200px) {
     /* desktop */
-    .listing__card {
-        width: 31%;
+    .listings__grid {
+        grid-template-columns: 30% 30% 30%;
+        gap: var(--grid-gap);
     }
 }

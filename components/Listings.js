@@ -14,17 +14,17 @@ const Listing = (srz) =>
   ) : (
     srz.map((el, idx) => {
       return (
-        <div key={el.title + String(idx)} className="listing__card">
-          <h3 className="oneline-truncated">{el.title}</h3>
-          <p className="price-location">
-            <span className="color-primary">
+        <div key={el.title + String(idx)}>
+          <h3 className="oneline-truncated m-1">{el.title}</h3>
+          <p className="listings__paragraph">
+            <span className="color-primary ml-1">
               <b>
                 {Number.isInteger(el.price)
                   ? formatAsCurrency(el.price)
                   : el.price}
               </b>
             </span>
-            <span className="color-text-light">{el.location}</span>
+            <span className="color-text-light mr-1">{el.location}</span>
           </p>
           {el.imgUrl && (
             <img
@@ -33,13 +33,13 @@ const Listing = (srz) =>
               alt={`${el.title}_${idx}`}
             />
           )}
-          <p className="threelines-truncated">{el.description}</p>
+          <p className="threelines-truncated m-1">{el.description}</p>
           <div>
             {ACTIONS.map((buttonText, idx) => (
               <button
                 key={`${buttonText}__${idx}`}
                 type="button"
-                className="card__button"
+                className="listings__button"
                 onClick={() => {
                   console.log(`${buttonText}: ${el.title}`);
                 }}
@@ -66,17 +66,17 @@ const Listings = ({ dataEndpoint, keyword, location }) => {
         const results = await (await fetch(`${dataEndpoint}`)).json();
 
         if (!results) {
-          console.log("71 -- please check your data return error...");
+          console.log("69 -- please check your data return error...");
         } else {
           setSearchResultes(results);
         }
       } catch (error) {
-        console.log("76 -- error: ", error.message);
+        console.log("74 -- error: ", error.message);
       }
     };
     (!searchResultes || searchResultes.length === 0) && fetchRz();
     //   return () => {}
-  });
+  }, []);
 
   if (!searchResultes)
     <div>Usually, place shared spinner component here...</div>;
