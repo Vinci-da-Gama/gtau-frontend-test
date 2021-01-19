@@ -45,11 +45,10 @@
 }
 
 .threelines-truncated {
-    --max-lines: 3;
     overflow: hidden;
-    min-height: 3.2rem;
-    height: 3.2rem;
-    max-height: 3.2rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .image__container {
