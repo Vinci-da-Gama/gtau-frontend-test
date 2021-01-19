@@ -33,7 +33,7 @@
 
 .listings__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns:  repeat(3, 1fr);
     grid-template-rows: auto;
     gap: var(--grid-gap);
     justify-items: center;
@@ -101,7 +101,7 @@
 @media (min-width: 768px) {
     /* tablet */
     .listings__grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-x3);
     }
 }
@@ -109,7 +109,7 @@
 @media (min-width: 800px) {
     /* tablet */
     .listings__grid {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: var(--spacing-x4);
     }
 }
